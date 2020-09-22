@@ -1,0 +1,31 @@
+<resources>
+
+    <!--Nome do Aplicativo-->
+    <string name="app_name">Veiculos</string>
+
+    <!--Activity_Cadastro.xml-->
+    <string name="titulo2">Cadastro de Veiculos</string>
+    <string name="nome">Nome do Veiculo</string>
+    <string name="placa">Placa do Veiculo</string>
+    <string name="cor">Cor do Veiculo</string>
+    <string name="salvar">Salvar</string>
+    <string name="excluir">Excluir</string>
+
+    <!--Activity_Abastecimento.xml-->
+    <string name="titulo1">Abastecimento</string>
+    <string name="litros">Quantidade em Litros</string>
+    <string name="cpf">CPF</string>
+    <string name="remover">Remover</string>
+    <string name="botaoAdd">Adicionar</string>
+
+    <!--Activity_Principal-->
+    <string name="cadastro">Cadastrar</string>
+    <string name="abastecer">Abastecer</string>
+
+    <!---->
+    <string name="atualizar">Atualizar</string>
+    <string name="confirmar">Confirmar</string>
+    <string name="Deletar">Button</string>
+    <string name="excluir2">excluir</string>
+
+</resources>
