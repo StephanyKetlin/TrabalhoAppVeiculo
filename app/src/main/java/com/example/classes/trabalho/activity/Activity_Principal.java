@@ -7,7 +7,6 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
-
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.classes.R;
 import com.example.classes.trabalho.entidades.ListaAbastecimento;
@@ -42,7 +41,7 @@ public class Activity_Principal extends AppCompatActivity {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Toast.makeText(getApplicationContext(),"valor "+i,Toast.LENGTH_LONG).show();
 
-                ListaAbastecimento ListABS= (ListaAbastecimento) abs.get(i);
+                ListaAbastecimento ListABS= (ListaAbastecimento) Abastecimento_List.get(i);
 
                 Intent it = new Intent(Activity_Principal.this,Activity_Cadastro.class);//SINTAXE: Intent([Nome da classe que deseja ser o "link" de volta].this,[Nome da outra classe ("link" de ida)].class)
                 /*O método "putExtra()" é usado para adicionar valores ao Bundle(pacote utilizados para a passagem de dados entre as Activity) interno*/
@@ -54,7 +53,7 @@ public class Activity_Principal extends AppCompatActivity {
                                                      @Override
                                                      public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
 
-                                                         dao_abastecimento.removeAbastecimento(abs.get(i).getId());
+                                                         dao_abastecimento.removeAbastecimento(Abastecimento_List.get(i).getId());
                                                          atualizaListagemAbastecimento();
                                                          return false;
                                                      }
@@ -67,7 +66,7 @@ public class Activity_Principal extends AppCompatActivity {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Toast.makeText(getApplicationContext(),"valor "+i,Toast.LENGTH_LONG).show();
 
-                ListaVeiculos carro= (ListaVeiculos) carros.get(i);
+                ListaVeiculos carro= (ListaVeiculos) Veiculos_List.get(i);
 
                 Intent it = new Intent(Activity_Principal.this,Activity_Cadastro.class);//SINTAXE: Intent([Nome da classe que deseja ser o "link" de volta].this,[Nome da outra classe ("link" de ida)].class)
                 /*O método "putExtra()" é usado para adicionar valores ao Bundle(pacote utilizados para a passagem de dados entre as Activity) interno*/
@@ -79,7 +78,7 @@ public class Activity_Principal extends AppCompatActivity {
                                                  @Override
                                                  public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
 
-                                                     dao_veiculos.removeVeiculo(carros.get(i).getId());
+                                                     dao_veiculos.removeVeiculo(Veiculos_List.get(i).getId());
                                                      atualizaListagemVeiculos();
                                                      return false;
                                                  }
@@ -102,23 +101,23 @@ public class Activity_Principal extends AppCompatActivity {
         startActivityForResult(it,1); //Carrega os dados da Intent (Carrega a pagina "NovaPagina")
     }
 
-    /*PROCEDIMENTO*/
+    /*PROCEDIMENTO de atualização de listView*/
     public void atualizaListagemVeiculos(){
         dao_veiculos = new DaoVeiculos(banco_dados.getReadableDatabase()); //Declara a classe "DaoVeiculos"
-        carros = dao_veiculos.getCarros(); //Chama o metodo getCarros da classe "CarroDaoBanco"
+        Veiculos_List = dao_veiculos.getCarros(); //Chama o metodo getCarros da classe "CarroDaoBanco"
 
         /*ArrayAdapter: Manipula dados com base em Arrays (vetores/matrizes) ou java.util.List*/
-        ArrayAdapter adapter = new ArrayAdapter(this,R.layout.support_simple_spinner_dropdown_item, carros); //SINTAXE: ArrayAdapter(this,[layout],[lista]);
+        ArrayAdapter adapter = new ArrayAdapter(this,R.layout.support_simple_spinner_dropdown_item, Veiculos_List); //SINTAXE: ArrayAdapter(this,[layout],[lista]);
         list_view.setAdapter(adapter); //Coloca o ArrayAdapter dentro da ListView na tela
     }
 
-    /*PROCEDIMENTO*/
+    /*PROCEDIMENTO de atualização de listView*/
     public void atualizaListagemAbastecimento(){
         dao_abastecimento = new DaoAbastecimento(banco_dados.getReadableDatabase()); //Declara a classe "DaoVeiculos"
-        abs = dao_abastecimento.getAbastecimento(); //Chama o metodo getCarros da classe "CarroDaoBanco"
+        Abastecimento_List = dao_abastecimento.getAbastecimento(); //Chama o metodo getCarros da classe "CarroDaoBanco"
 
         /*ArrayAdapter: Manipula dados com base em Arrays (vetores/matrizes) ou java.util.List*/
-        ArrayAdapter adapter = new ArrayAdapter(this,R.layout.support_simple_spinner_dropdown_item, abs); //SINTAXE: ArrayAdapter(this,[layout],[lista]);
+        ArrayAdapter adapter = new ArrayAdapter(this,R.layout.support_simple_spinner_dropdown_item, Abastecimento_List); //SINTAXE: ArrayAdapter(this,[layout],[lista]);
         list_view.setAdapter(adapter); //Coloca o ArrayAdapter dentro da ListView na tela
     }
 

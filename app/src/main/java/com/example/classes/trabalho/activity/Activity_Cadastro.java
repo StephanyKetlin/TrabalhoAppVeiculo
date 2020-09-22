@@ -36,10 +36,10 @@ public class Activity_Cadastro extends AppCompatActivity {
         placa = findViewById(R.id.idplaca);
         cor = findViewById(R.id.idcor);
 
-        Intent it =getIntent();
-        Veiculos_List= (ListaVeiculos) it.getSerializableExtra("Veiculos_List");
+        Intent it = getIntent();
+        Veiculos_List = (ListaVeiculos) it.getSerializableExtra("Veiculos_List");
 
-        if(Veiculos_List!=null) {
+        if (Veiculos_List != null) {
             nome.setText(Veiculos_List.getNome());
             placa.setText(Veiculos_List.getPlaca());
             cor.setText(Veiculos_List.getCor().toString());
@@ -47,23 +47,23 @@ public class Activity_Cadastro extends AppCompatActivity {
     }
 
     /*PROCEDIMENTO "AcaoBotao", aparece na barra de opções onClick*/
-    public  void salvarVeiculo(View view){
+    public void salvarVeiculo(View view) {
 
         banco_dados = new BancoDados(this); //Declarando o BD
         dao_veiculos = new DaoVeiculos(banco_dados.getWritableDatabase());
 
-        if(Veiculos_List==null)
+        if (Veiculos_List == null)
             Veiculos_List = new ListaVeiculos();//Declaro a classe "ListaVeiculos" na variavel Veiculos_List
 
         /*Pego os dados inseridos e preencho a classe "Carro"*/
-        if(valida()) {
+        if (valida()) {
             /*Executa a função setNome,setAno e setPlaca da classe "Carro"*/
             Veiculos_List.setNome(nome.getText().toString());
             Veiculos_List.setPlaca(placa.getText().toString());
             Veiculos_List.setCor(cor.getText().toString());
 
             //Salvo carro na lista
-            if(Veiculos_List.getId()!=null && Veiculos_List.getId()>0)
+            if (Veiculos_List.getId() != null && Veiculos_List.getId() > 0)
                 dao_veiculos.atualizarVeiculo(Veiculos_List);
             else
                 dao_veiculos.inserirVeiculo(Veiculos_List);
@@ -76,20 +76,25 @@ public class Activity_Cadastro extends AppCompatActivity {
         }
     }
 
-    public boolean valida(){
-        return validaEditText(nome) &&validaEditText(placa)&&validaEditText(cor)?true:false;
+
+    public boolean valida() {
+        return validaEditText(nome) && validaEditText(placa) && validaEditText(cor) ? true : false;
     }
 
     //qualquer edittext
-    public boolean validaEditText(EditText editText){
-        if(!TextUtils.isEmpty(editText.getText().toString().trim())){
+    public boolean validaEditText(EditText editText) {
+        if (!TextUtils.isEmpty(editText.getText().toString().trim())) {
             return true;
-        }else{
+        } else {
             editText.setError("O Campo deve ser preenchido");
             editText.requestFocus();
             // Toast.makeText(this,"O Campo nome deve ser preenchido",Toast.LENGTH_LONG).show();
-            return  false;
+            return false;
         }
+    }
 
-
+    public void RemoverVeiculo(View view){
+        ListaVeiculos Veiculos_List = new ListaVeiculos();
+        dao_veiculos.removeVeiculo(Veiculos_List);
+    }
 }

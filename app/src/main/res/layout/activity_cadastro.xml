@@ -98,6 +98,7 @@
         android:layout_marginEnd="115dp"
         android:layout_marginRight="115dp"
         android:layout_marginBottom="232dp"
+        android:onClick="RemoverVeiculo"
         android:text="@string/excluir"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

@@ -22,6 +22,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="92dp"
         android:layout_marginRight="92dp"
+        android:onClick="RemoverAbastecimento"
         android:text="@string/remover"
         app:layout_constraintEnd_toEndOf="parent"
         tools:ignore="MissingConstraints"
@@ -40,7 +41,7 @@
         tools:layout_editor_absoluteY="446dp" />
 
     <EditText
-        android:id="@+id/litros"
+        android:id="@+id/idlitros"
         android:layout_width="464dp"
         android:layout_height="79dp"
         android:layout_marginTop="212dp"
@@ -54,7 +55,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/litros2"
+        android:id="@+id/idcpf"
         android:layout_width="461dp"
         android:layout_height="77dp"
         android:autofillHints=""

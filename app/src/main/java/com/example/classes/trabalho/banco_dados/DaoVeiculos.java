@@ -39,9 +39,9 @@ public class DaoVeiculos {
     }
 
 
-    public void removeVeiculo(Integer id){
+    public void removeVeiculo(ListaVeiculos carros){
 
-        conexaoBD.delete("VEICULO","ID=?",new String[]{id.toString()});
+        conexaoBD.delete("VEICULO","ID=?",new String[]{carros.toString()});
     }
 
 

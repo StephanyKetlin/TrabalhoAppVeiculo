@@ -35,9 +35,9 @@ public class DaoAbastecimento {
         conexaoBD.update("ABASTECIMENTO",values,"ID=?",new String[]{abs.getId().toString()});
     }
 
-    public void removeAbastecimenoto(Integer id){
+    public void removeAbastecimento(ListaAbastecimento abs){
 
-        conexaoBD.delete("ABASTECIMENTO","ID=?",new String[]{id.toString()});
+        conexaoBD.delete("ABASTECIMENTO","ID=?",new String[]{abs.toString()});
     }
 
     /*Salva dentro da lista*/
